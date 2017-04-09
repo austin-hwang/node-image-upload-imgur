@@ -2,16 +2,9 @@
 <head>
   <meta charset="utf-8">
   <title>Dropzone simple example</title>
-  <script src="/javascripts/dropzone.js"></script>
-  <link rel="stylesheet" href="stylesheets/dropzone.css">
-  <style>
-    .dz-remove{
-      color: rgb(240, 0, 30);
-      font-family: Cambria;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  <script src="../javascripts/dropzone.js"></script>
+  <link rel="stylesheet" href="/stylesheets/dropzone.css" />
+  <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
 </head>
 <body>
   <div style="width:70%; margin:0px auto; ">
@@ -23,40 +16,6 @@
       <span id="hide" style="display: none"> Link to uploaded images </span><a id="link" href="#" target="_blank"></a>
     </div>
   </div>
-
-  <script>
-      function show_link(link){
-        document.getElementById('hide').style.display = 'block';
-        var image_list = document.getElementById("image_list");
-        var aTag = document.createElement('a');
-        aTag.setAttribute('href', link);
-        aTag.innerHTML = link;
-        image_list.appendChild(aTag);
-        var lineBreak = document.createElement('br');
-        image_list.appendChild(lineBreak);
-      }
-
-      function hide_link(){
-        document.getElementById('hide').style.display = 'none';
-      }
-
-      Dropzone.options.myId = {
-        init: function() {
-          this.on("success", function(file, res) {
-            console.log(file);
-            console.log(res.data.link);
-            show_link(res.data.link)
-
-          });
-
-          this.on("reset", function(){
-            hide_link();
-          });
-        },
-        paramName: "image",
-        url : "https://api.imgur.com/3/upload",
-        addRemoveLinks: true,
-        headers: { "Authorization" : "Client-ID 3d0295885297563",  "Cache-Control": null, "X-Requested-With": null} 
-      };
+  <script src="../javascripts/upload.js">
   </script>  
 </body>
